@@ -1,0 +1,203 @@
+@font-face {
+  font-display: swap;
+  font-family: "Fujimaru";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./assets/fonts/Fujimaru-Regular.ttf") format("truetype");
+}
+
+html {
+  font-size: 12px;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --beige: #fffbf3;
+  --yellow: #f1f0ad;
+  --pink: #deacc8;
+  --blue: #1b6a9e;
+  --green: #296433;
+  --orange: #ffaa00;
+}
+
+.main-container-app {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--yellow);
+}
+
+/* MENU START */
+
+.menu-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-direction: column;
+}
+
+.menu-background {
+  border-radius: 100px 500px / 500px 150px;
+  border: 01rem solid var(--pink);
+
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+
+  width: 90%;
+  max-width: 100rem;
+  filter: opacity(0.85);
+}
+
+.menu-info {
+  position: absolute;
+  top: 10%;
+}
+
+.title,
+.sub-title {
+  font-family: Fujimaru;
+  margin: 0;
+  color: var(--orange);
+  text-align: center;
+}
+
+.title {
+  font-size: 9rem;
+}
+
+.sub-title {
+  font-size: 4rem;
+  margin-bottom: 7rem;
+}
+
+.menu-button-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 2rem;
+}
+
+.btn-menu-difficulty {
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  font-family: "Fujimaru";
+  color: var(--beige);
+  font-size: 2rem;
+  padding: 1rem;
+  border: none;
+  background-color: var(--blue);
+  border-radius: 20px 8px / 10px 20px;
+  cursor: pointer;
+  transition: transform 0.3s ease-out;
+}
+.btn-menu-difficulty:first-child {
+  border-radius: 10px 25px / 25px 15px;
+}
+.btn-menu-difficulty:last-child {
+  border-radius: 20px 25px / 10px 15px;
+}
+
+.btn-menu-difficulty::after {
+  content: "";
+  position: absolute;
+  top: 0rem;
+  left: 0rem;
+  width: 120%;
+  height: 100%;
+  background-color: var(--green);
+  z-index: -1;
+  transform: translate(-130%, -0%) skewX(45deg);
+  transition: transform 0.3s ease-out;
+}
+
+.btn-menu-difficulty:hover::after {
+  transform: translate(-10%, 0%) skewX(10deg);
+}
+
+.btn-menu-difficulty:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s;
+}
+
+/* MENU END */
+
+/* GAME START */
+
+.game-board {
+  width: 100%;
+}
+
+/* CARDS */
+
+.main {
+  width: 90%;
+}
+
+.card {
+  position: relative;
+}
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+  justify-items: center;
+  gap: 3rem;
+}
+
+.card img {
+  height: 100%;
+}
+
+.card {
+  aspect-ratio: 80/120;
+  height: 20rem;
+  perspective: 800px;
+}
+
+.card-front,
+.card-back {
+  box-sizing: border-box;
+  position: absolute;
+  height: 100%;
+  backface-visibility: hidden;
+  transition: transform 0.5s ease-in-out;
+  border: 0.5rem solid var(--green);
+  border-radius: 0.5rem;
+}
+
+.card-front {
+  transform: rotateY(0deg);
+}
+.card-back {
+  transform: rotateY(180deg);
+}
+
+.cards-container.flip .card-front {
+  transform: rotateY(180deg);
+}
+.cards-container.flip .card-back {
+  transform: rotateY(360deg);
+}
+
+/* GAME END */
+
+.main {
+  position: relative;
+}
+
+.modal-gameover {
+  height: 20rem;
+  width: 30rem;
+  background-color: aqua;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
