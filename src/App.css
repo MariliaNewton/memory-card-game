@@ -145,7 +145,11 @@ button {
 /* GAME START */
 
 .game-board {
-  min-width: 90%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 90%;
+  height: 100vh;
 }
 
 /* CARDS */
@@ -155,6 +159,9 @@ button {
   grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
   justify-items: center;
   gap: 3rem;
+  width: 100%;
+  max-width: 80rem;
+  padding: 1rem;
 }
 
 .card {
@@ -201,7 +208,7 @@ button {
 /* GAME HEADER */
 
 .game-board header {
-  margin-bottom: 6rem;
+  width: 100%;
 }
 
 .score-container {
@@ -341,4 +348,43 @@ button {
 .modal-btn-container button:hover {
   color: var(--pink);
   transform: scale(1.1);
+}
+
+/* MEDIA QUERIES */
+
+@media (max-width: 1024px) {
+}
+
+@media (max-width: 744px) {
+  html {
+    font-size: 10px;
+  }
+  .title {
+    font-size: 8.5rem;
+  }
+  .sub-title {
+    font-size: 4.25rem;
+  }
+  .score-container {
+    width: 95%;
+    gap: 1rem;
+    margin-bottom: 8rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .title {
+    font-size: 6rem;
+  }
+  .sub-title {
+    font-size: 2.5rem;
+    text-shadow: 0.2rem 0.2rem var(--blue);
+  }
+  .menu-container img {
+    height: 17rem;
+  }
+  .btn-game-quit {
+    top: 9rem;
+    left: 44%;
+  }
 }
