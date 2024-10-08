@@ -394,6 +394,7 @@ button {
 
   .main-container-app {
     min-height: 90vh;
+    margin-top: 5vh;
   }
   .sub-title {
     font-size: 2.4rem;
