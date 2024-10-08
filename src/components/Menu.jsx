@@ -9,7 +9,10 @@ function Menu({ onDifficultySelection }) {
         <h1 className="title">スタジオジブリ</h1>
         <h2 className="sub-title">- Ghibli memory card game -</h2>
       </div>
-      <img src={ghibli} alt="" />
+      <img
+        src={ghibli}
+        alt="Six small, round, ghibli creatures in various poses, one holding a large green leaf above its head. They have large eyes and light-colored bodies, resembling small animals"
+      />
       <div className="menu-button-container">
         <button
           onClick={onDifficultySelection}

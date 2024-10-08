@@ -1,7 +1,7 @@
 import Tilt from "react-parallax-tilt";
 import backgroundCard from "../assets/images/backcard.jpg";
 
-function Card({ onCardClick, url, flip }) {
+function Card({ onCardClick, url, title }) {
   return (
     <Tilt
       tiltReverse
@@ -13,10 +13,10 @@ function Card({ onCardClick, url, flip }) {
     >
       <div className="card" onClick={onCardClick}>
         <div className="card-front">
-          <img src={url} alt="" />
+          <img src={url} alt={`${title} poster movie`} />
         </div>
         <div className="card-back ">
-          <img src={backgroundCard} alt="" />
+          <img src={backgroundCard} alt="Back of a playing card deck" />
         </div>
       </div>
     </Tilt>

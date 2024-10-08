@@ -104,7 +104,6 @@ function GameBoard({
             key={card.id}
             url={card.url}
             title={card.title}
-            flip={flip}
             onCardClick={() => handleCardClick(card)}
           />
         ))}
