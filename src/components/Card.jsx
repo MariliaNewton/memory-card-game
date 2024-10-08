@@ -1,15 +1,25 @@
+import Tilt from "react-parallax-tilt";
 import backgroundCard from "../assets/images/backcard.jpg";
 
-function Card({ onCardClick, url }) {
+function Card({ onCardClick, url, flip }) {
   return (
-    <div className="card" onClick={onCardClick}>
-      <div className="card-front">
-        <img src={url} alt="" />
+    <Tilt
+      tiltReverse
+      perspective={1000}
+      glareEnable={true}
+      glareMaxOpacity={0.45}
+      gyroscope={true}
+      className="tilt"
+    >
+      <div className="card" onClick={onCardClick}>
+        <div className="card-front">
+          <img src={url} alt="" />
+        </div>
+        <div className="card-back ">
+          <img src={backgroundCard} alt="" />
+        </div>
       </div>
-      <div className="card-back ">
-        <img src={backgroundCard} alt="" />
-      </div>
-    </div>
+    </Tilt>
   );
 }
 

@@ -5,6 +5,13 @@
   font-weight: 400;
   src: url("./assets/fonts/Fujimaru-Regular.ttf") format("truetype");
 }
+@font-face {
+  font-display: swap;
+  font-family: "Daruma";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./assets/fonts/DarumadropOne-Regular.ttf") format("truetype");
+}
 
 html {
   font-size: 12px;
@@ -14,6 +21,10 @@ html {
 body {
   margin: 0;
   padding: 0;
+}
+
+button {
+  cursor: pointer;
 }
 
 :root {
@@ -44,11 +55,11 @@ body {
 }
 
 .menu-background {
-  border-radius: 100px 500px / 500px 150px;
+  border-radius: 10rem 50rem / 50rem 15rem;
   border: 01rem solid var(--pink);
 
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
-    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 1.5rem 2.2rem,
+    rgba(0, 0, 0, 0.22) 0px 1.2rem 0.8rem;
 
   width: 90%;
   max-width: 100rem;
@@ -62,7 +73,7 @@ body {
 
 .title,
 .sub-title {
-  font-family: Fujimaru;
+  font-family: Daruma;
   margin: 0;
   color: var(--orange);
   text-align: center;
@@ -88,7 +99,7 @@ body {
   overflow: hidden;
   position: relative;
   z-index: 1;
-  font-family: "Fujimaru";
+  font-family: Daruma;
   color: var(--beige);
   font-size: 2rem;
   padding: 1rem;
@@ -132,18 +143,10 @@ body {
 /* GAME START */
 
 .game-board {
-  width: 100%;
+  min-width: 90%;
 }
 
 /* CARDS */
-
-.main {
-  width: 90%;
-}
-
-.card {
-  position: relative;
-}
 
 .cards-container {
   display: grid;
@@ -152,14 +155,16 @@ body {
   gap: 3rem;
 }
 
-.card img {
-  height: 100%;
-}
-
 .card {
+  position: relative;
   aspect-ratio: 80/120;
   height: 20rem;
   perspective: 800px;
+  cursor: pointer;
+}
+
+.card img {
+  height: 100%;
 }
 
 .card-front,
@@ -171,6 +176,10 @@ body {
   transition: transform 0.5s ease-in-out;
   border: 0.5rem solid var(--green);
   border-radius: 0.5rem;
+}
+
+.flip .tilt {
+  pointer-events: none;
 }
 
 .card-front {
@@ -187,17 +196,147 @@ body {
   transform: rotateY(360deg);
 }
 
+/* GAME HEADER */
+
+.game-board header {
+  margin-bottom: 6rem;
+}
+
+.score-container {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  border: 1rem solid var(--pink);
+  width: 70%;
+  max-width: 40rem;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  border-radius: 10rem 50rem / 50rem 15rem;
+  border: 01rem solid var(--pink);
+}
+
+.score-container h1 {
+  font-size: 2.75rem;
+  margin: 1rem;
+  font-family: Daruma;
+  color: #1b6a9e;
+}
+
+.score-container span {
+  font-size: 3.5rem;
+}
+
+.btn-game-quit {
+  overflow: hidden;
+  position: absolute;
+  top: 1rem;
+  right: -9rem;
+  z-index: 1;
+  font-family: Daruma;
+  color: var(--pink);
+  font-size: 1.5rem;
+  height: 5.5rem;
+  width: 5.5rem;
+  border: none;
+  background-color: var(--green);
+  border-radius: 200px 80px / 100px 200px;
+  cursor: pointer;
+  transition: transform 0.3s ease-out;
+}
+
+.btn-game-quit::after {
+  content: "";
+  position: absolute;
+  top: 0rem;
+  left: 0rem;
+  width: 120%;
+  height: 100%;
+  background-color: var(--blue);
+  z-index: -1;
+  transform: translate(-130%, -0%) skewX(45deg);
+  transition: transform 0.3s ease-out;
+}
+
+.btn-game-quit:hover::after {
+  transform: translate(-10%, 0%) skewX(10deg);
+}
+
+.btn-game-quit:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s;
+}
+
 /* GAME END */
 
-.main {
-  position: relative;
+/* MODAL GAME OVER */
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
 }
 
 .modal-gameover {
-  height: 20rem;
-  width: 30rem;
-  background-color: aqua;
-  position: absolute;
-  top: 0;
-  right: 0;
+  height: 25rem;
+  width: 35rem;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--blue);
+  border: 1rem solid var(--yellow);
+  border-radius: 100px 40px / 50px 100px;
+  z-index: 1100;
+  font-family: Daruma;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-gameover h1 {
+  color: var(--orange);
+  margin: 1rem;
+  font-size: 5rem;
+}
+
+.modal-gameover h2 {
+  color: var(--pink);
+  font-size: 2rem;
+  margin: 1rem;
+}
+
+.modal-btn-container {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem;
+}
+
+.modal-btn-container button {
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  font-family: Daruma;
+  color: var(--yellow);
+  font-size: 1.75rem;
+  padding: 0.5rem;
+  height: 4.5rem;
+  width: 10rem;
+  border: none;
+  background-color: var(--green);
+  border-radius: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+
+.modal-btn-container button:hover {
+  color: var(--pink);
+  transform: scale(1.1);
 }

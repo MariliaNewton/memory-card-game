@@ -4,6 +4,7 @@ import axios from "axios";
 
 function GameBoard({
   difficulty,
+  gameOver,
   onGameOver,
   score,
   onUpdateScore,
@@ -21,7 +22,7 @@ function GameBoard({
   }, []);
 
   useEffect(() => {
-    score > highScore && setHighScore(score);
+    if (score > highScore) setHighScore(score);
   }, [score]);
 
   useEffect(() => {
@@ -35,9 +36,13 @@ function GameBoard({
     if (selectedCards.length > 0) {
       setTimeout(() => {
         setFlip(false);
-      }, 1000);
+      }, 600);
     }
   }, [selectedCards]);
+
+  useEffect(() => {
+    gameOver ? setFlip(true) : setFlip(false);
+  }, [gameOver]);
 
   async function fetchMovies() {
     try {
@@ -63,23 +68,35 @@ function GameBoard({
   }
 
   function handleCardClick(card) {
+    // guard clause
+    if (flip) return;
+
     if (selectedCards.includes(card)) {
       onGameOver();
       return;
     }
     setFlip(true);
-
     setSelectedCards((sc) => [...sc, card]);
-    shuffleCards();
-    onUpdateScore();
+    setTimeout(() => {
+      shuffleCards();
+      onUpdateScore();
+    }, 500);
   }
 
   return (
     <div className="game-board">
       <header>
-        <h1>Score: {score}</h1>
-        <h1>High score: {highScore}</h1>
-        <button onClick={onGoToMenu}>Quit</button>
+        <div className="score-container">
+          <h1>
+            Score: <span>{score}</span>
+          </h1>
+          <h1>
+            High score: <span>{highScore}</span>
+          </h1>
+          <button onClick={onGoToMenu} className="btn-game-quit">
+            QUIT
+          </button>
+        </div>
       </header>
       <div className={`cards-container ${flip ? "flip" : ""}`}>
         {cards.map((card) => (
@@ -87,6 +104,7 @@ function GameBoard({
             key={card.id}
             url={card.url}
             title={card.title}
+            flip={flip}
             onCardClick={() => handleCardClick(card)}
           />
         ))}

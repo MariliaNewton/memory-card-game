@@ -44,9 +44,10 @@ function App() {
       {!difficulty ? (
         <Menu onDifficultySelection={handleDifficultySelection} />
       ) : (
-        <div className="main">
+        <>
           <GameBoard
             difficulty={difficulty}
+            gameOver={gameOver}
             onGameOver={handleGameOver}
             score={score}
             onUpdateScore={handleUpdateScore}
@@ -54,6 +55,7 @@ function App() {
             resetCards={resetCards}
             onResetCards={() => setResetCards(false)}
           />
+          <div className={gameOver ? "overlay" : ""}></div>
           {gameOver && (
             <GameOverModal
               onGoToMenu={handleGoToMenu}
@@ -61,7 +63,7 @@ function App() {
               won={difficulty === score}
             />
           )}
-        </div>
+        </>
       )}
     </div>
   );
