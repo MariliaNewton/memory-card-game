@@ -403,3 +403,9 @@ button {
     left: 42%;
   }
 }
+
+@media (max-width: 430px) {
+  .tilt {
+    transform: inherit !important;
+  }
+}
