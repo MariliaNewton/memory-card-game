@@ -16,6 +16,7 @@
 html {
   font-size: 12px;
   height: 100%;
+  background-color: var(--yellow);
 }
 
 body {
@@ -41,7 +42,6 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--yellow);
 }
 
 /* MENU START */
@@ -50,25 +50,26 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
   flex-direction: column;
 }
 
-.menu-background {
-  border-radius: 10rem 50rem / 50rem 15rem;
-  border: 01rem solid var(--pink);
-
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 1.5rem 2.2rem,
-    rgba(0, 0, 0, 0.22) 0px 1.2rem 0.8rem;
-
+.menu-border {
+  position: absolute;
+  height: 90%;
   width: 90%;
-  max-width: 100rem;
-  filter: opacity(0.85);
+  border-radius: 5rem 25rem / 25rem 8rem;
+  border: 0.85rem solid var(--pink);
+}
+.menu-border-2 {
+  position: absolute;
+  height: 89%;
+  width: 89%;
+  border-radius: 25rem 5rem / 8rem 25rem;
+  border: 0.5rem solid var(--green);
 }
 
-.menu-info {
-  position: absolute;
-  top: 10%;
+.menu-container img {
+  height: 25rem;
 }
 
 .title,
@@ -77,6 +78,7 @@ button {
   margin: 0;
   color: var(--orange);
   text-align: center;
+  text-shadow: 0.3rem 0.3rem var(--blue);
 }
 
 .title {
@@ -85,7 +87,6 @@ button {
 
 .sub-title {
   font-size: 4rem;
-  margin-bottom: 7rem;
 }
 
 .menu-button-container {
@@ -93,6 +94,7 @@ button {
   justify-content: center;
   gap: 2rem;
   margin: 2rem;
+  margin-top: 0;
 }
 
 .btn-menu-difficulty {
@@ -333,7 +335,7 @@ button {
   background-color: var(--green);
   border-radius: 1.5rem;
   cursor: pointer;
-  transition: all 0.3s ease-out;
+  transition: all 0.2s ease-out;
 }
 
 .modal-btn-container button:hover {

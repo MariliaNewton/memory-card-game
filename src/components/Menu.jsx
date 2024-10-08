@@ -1,13 +1,15 @@
-import backgroundImg from "../assets/images/ghibli-landscape.webp";
+import ghibli from "../assets/images/ghibli.png";
 
 function Menu({ onDifficultySelection }) {
   return (
     <div className="menu-container">
-      <img src={backgroundImg} className="menu-background" />
+      <div className="menu-border"></div>
+      <div className="menu-border-2"></div>
       <div className="menu-info">
-        <h1 className="title">GHIBLI</h1>
-        <h2 className="sub-title">- Memory card game -</h2>
+        <h1 className="title">スタジオジブリ</h1>
+        <h2 className="sub-title">- Ghibli memory card game -</h2>
       </div>
+      <img src={ghibli} alt="" />
       <div className="menu-button-container">
         <button
           onClick={onDifficultySelection}
